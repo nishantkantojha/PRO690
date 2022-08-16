@@ -71,4 +71,4 @@ jobs:
       - run: docker --version
       - run: kubectl get po -A
       - run: kubectl cluster-info
-      - run: kubectl get nodes
+      - run: kubectl get nodes 

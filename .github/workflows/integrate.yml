@@ -39,20 +39,31 @@ jobs:
         message: Starting Build and Deploy...
       if: always()
 
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'dev'
-      - run: flutter config --enable-web
-      - run: flutter pub get
-      - run: flutter build web --release
-      - run: |
-          docker build -t flutter-web .
-      - run: |
-          docker run -d -p 8080:80 --name flutter-web flutter-web 
+    - name: Checkout actions
+      uses: actions/checkout@v1
     
-    steps:
+    - name: Checkout flutter-action
+      uses: actions/checkout@v1
+      with:
+        channel: 'dev'
+
+    - name: Checkout flutter-action
+      run: flutter config --enable-web  
+
+    - name: Checkout flutter-action
+      run: flutter config --enable-web
+
+    - name: Checkout flutter-action
+      run: flutter build web --release
+
+    - name: Checkout flutter-action
+      run: |
+        docker build -t flutter-web .
+        
+    - name: Checkout flutter-action
+      run: |
+        docker run -d -p 8080:80 --name flutter-web flutter-web 
+    
     - name: Slack Notification
       uses: act10ns/slack@v1
       with: 

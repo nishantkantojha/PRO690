@@ -47,20 +47,20 @@ jobs:
       with:
         channel: 'dev'
 
-    - name: Checkout flutter-action
+    - name: Enable flutter web config
       run: flutter config --enable-web  
 
-    - name: Checkout flutter-action
+    - name: Fetch flutter dependencies
       run: flutter pub get
 
-    - name: Checkout flutter-action
+    - name: Release flutter web
       run: flutter build web --release
 
-    - name: Checkout flutter-action
+    - name: Build docker contianer
       run: |
         docker build -t flutter-web .
         
-    - name: Checkout flutter-action
+    - name: Run flutter web container
       run: |
         docker run -d -p 8080:80 --name flutter-web flutter-web 
     

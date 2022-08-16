@@ -44,6 +44,7 @@ jobs:
       - run: flutter config --enable-web
       - run: flutter pub get
       - run: flutter build web --release
+      - run: docker image rm flutter-web
       - run: |
           docker build -t flutter-web .
       - run: |

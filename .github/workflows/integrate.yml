@@ -25,10 +25,12 @@ jobs:
         message: Starting Build and Deploy...
       if: always()
       
-    - name: Buliding project
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-      - with:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    
+    - name: Building Flutter Web
+      uses: subosito/flutter-action@v1
+      with:
          channel: 'dev'
       run: flutter config --enable-web
       run: flutter pub get

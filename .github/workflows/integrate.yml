@@ -34,7 +34,7 @@ jobs:
 
   flutter_build:
     name: Build
-    needs: [flutter_test]]
+    needs: [flutter_test]
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v1

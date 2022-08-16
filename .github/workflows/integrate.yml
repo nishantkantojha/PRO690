@@ -1,47 +1,21 @@
 name: CI
-on:
-  push:
-    branches:
-      - main
+on: [push]
+
 jobs:
   build_web:
     name: Build Flutter (Web)
     runs-on: ubuntu-latest
-    env:
-      NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-      PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
-      PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
-      #SANDBOX_CLIENT_ID: ${{ secrets.SANDBOX_CLIENT_ID }}
-      #SANDBOX_CLIENT_SECRET: ${{ secrets.SANDBOX_CLIENT_SECRET }} 
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
     steps:
-    - name: Slack Notification
-      uses: act10ns/slack@v1
-      with: 
-        status: starting
-        channel: '#flutter-sample'
-        message: Starting Build and Deploy...
-      if: always()
-      
-    - name: Checkout repository
-      uses: actions/checkout@v1
-    
-    - name: Building Flutter Web
-      uses: subosito/flutter-action@v1
-      with:
-         channel: 'dev'
-      run: flutter config --enable-web
-      run: flutter pub get
-      run: flutter build web --release
-      run: |
-        cd build/web
-        git init
-        git config --global user.email nishantkantojha@outlook.com
-        git config --global user.name nishantkantojha
-        git status
-        git remote add origin https://${{secrets.commit_secret}}@github.com/nishantkantojha/PRO690.git
-        git add .
-        git commit - "update"
-        git push origin main -f
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'dev'
+      - run: flutter config --enable-web
+      - run: flutter pub get
+      - run: flutter build web --release
+      - run: |
+          cd build/web
+          git init
+          git config --global user.email nishantkantojha@outlook.com
+          git config --global user.name nishantkantojha
+          git status

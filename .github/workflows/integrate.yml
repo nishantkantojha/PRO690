@@ -76,7 +76,7 @@ jobs:
       - run: kubectl get nodes
       - run: |
           cd ~/actions-runner/workspace/PRO690/PRO690/.github/deploy
-          kubectl apply -f deploy/deployment.yaml
+          kubectl apply -f deployment.yaml
       - run: kubectl get deployment
       - run: kubectl get pod
       - run: kubectl cluster-info

@@ -1,0 +1,61 @@
+name: Integration
+on: [push]
+jobs:
+  Checking-Dependancy:
+    runs-on: [self-hosted]
+    steps:
+      - name: Git
+        run: |
+          git --version
+
+      - name: Bash
+        run: |
+          bash --version
+
+      - name: Curl
+        run: |
+          curl --version
+
+      - name: file
+        run: |
+          file --version
+
+      - name: mkdir
+        run: |
+          mkdir --version
+
+      - name: rm
+        run: |
+          rm --version
+
+      - name: zip
+        run: |
+          zip -v
+
+      - name: unzip
+        run: |
+          unzip -v
+
+      - name: Terraform
+        run: |
+          terraform -version
+      
+      - name: Ansible
+        run: |
+          ansible --version
+
+      - name: Docker
+        run: |
+          docker --version
+
+      - name: Kubeadm
+        run: |
+          kubeadm version
+  
+  
+  Build:
+    runs-on: [self-hosted]
+    steps:      
+      - name: Running flutter doctor
+        run: |
+          flutter doctor 

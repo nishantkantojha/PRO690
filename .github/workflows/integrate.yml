@@ -1,0 +1,25 @@
+name: CI
+on: [push]
+
+jobs:
+  build_web:
+    name: Build Flutter (Web)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'dev'
+      - run: flutter config --enable-web
+      - run: flutter pub get
+      - run: flutter build web --release
+      - run: |
+          cd build/web
+          git init
+          git config --global user.email nishantkantojha@outlook.com
+          git config --global user.name nishantkantojha
+          git status
+          git remote add origin https://github.com/projectDevops690/FlutterSample.git
+          git add /home/runner/work/FlutterSample/FlutterSample/build/web/
+          git commit - "update"
+          git push origin main -f

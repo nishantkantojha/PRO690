@@ -34,7 +34,7 @@ jobs:
 
   flutter_build:
     name: Build
-    needs: [flutter_test]
+    needs: [build_notification]
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v1
@@ -66,7 +66,7 @@ jobs:
 
   flutter_deploy:
     name: Deploy
-    needs: [flutter_build]
+    needs: [deploy_notification]
     runs-on: self-hosted
     steps:
       - run: docker --version

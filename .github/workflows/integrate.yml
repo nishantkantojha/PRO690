@@ -16,14 +16,12 @@ jobs:
   #     - run: flutter pub get
   #     - run: flutter analyze
   #     - run: flutter test
-      
-  flutter_build:
-    name: Build
-    # needs: [flutter_test]
+
+  send_notification:
+    name: Slack Notification
     runs-on: self-hosted
-    # env:
-    #   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
     - name: Slack Notification
       uses: act10ns/slack@v1
@@ -33,43 +31,22 @@ jobs:
         message: Starting Build and Deploy...
       if: always()
 
-    - name: Checkout actions
-      uses: actions/checkout@v1
-    
-    - name: Checkout flutter-action
-      uses: actions/checkout@v1
-      with:
-        channel: 'dev'
-
-    - name: Set flutter path
-      run: |
-        export PATH="$/home/master/development/flutter/bin"
-
-    - name: Enable flutter web config
-      run: |
-        flutter config --enable-web
-
-    # - name: Fetch flutter dependencies
-    - run: flutter pub get
-
-    # - name: Release flutter web
-    - run: flutter build web --release
-
-    - name: Build docker contianer
-      run: |
-        docker build -t flutter-web .
-        
-    - name: Run flutter web container
-      run: |
-        docker run -d -p 8080:80 --name flutter-web flutter-web 
-        
-    - name: Slack Notification
-      uses: act10ns/slack@v1
-      with: 
-        status: starting
-        channel: '#flutter-sample'
-        message: Starting Build and Deploy...
-      if: always()
+  flutter_build:
+    name: Build
+    needs: [flutter_test]
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'dev'
+      - run: flutter config --enable-web
+      - run: flutter pub get
+      - run: flutter build web --release
+      - run: |
+          docker build -t flutter-web .
+      - run: |
+          docker run -d -p 8080:80 --name flutter-web flutter-web 
 
   flutter_deploy:
     name: Deploy

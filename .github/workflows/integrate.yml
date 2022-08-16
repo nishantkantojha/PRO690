@@ -19,6 +19,7 @@ jobs:
       
   build_web:
     name: Build Flutter (Web)
+    needs: [flutter_test]
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v1

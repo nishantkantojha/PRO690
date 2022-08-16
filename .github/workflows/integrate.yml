@@ -19,7 +19,7 @@ jobs:
           git config --global user.email nishantkantojha@outlook.com
           git config --global user.name nishantkantojha
           git status
-          git remote add origin https://github.com/projectDevops690/FlutterSample.git
-          git add /home/runner/work/FlutterSample/FlutterSample/build/web/
+          git remote add origin https://${{secrets.commit_secret}}@github.com/nishantkantojha/PRO690.git
+          git add -all
           git commit - "update"
           git push origin main -f

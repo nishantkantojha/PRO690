@@ -1,16 +1,28 @@
-# sample_project
+# CI/CD POC
 
-A new Flutter project.
+## Automation Workflows
+![image](https://user-images.githubusercontent.com/67943978/184982762-69b51c73-2e7f-4548-b7dc-dbc209418b93.png)
 
-## Getting Started
+## GitHub Action Workflow
+![image](https://user-images.githubusercontent.com/67943978/184983093-0d327a81-59e7-4c0a-9508-b55a9509fcfe.png)
 
-This project is a starting point for a Flutter application.
+### 1. [Test](https://github.com/nishantkantojha/PRO690/blob/main/.github/workflows/integrate.yml#L6)
+![image](https://user-images.githubusercontent.com/67943978/184983340-00d81d49-9076-4ca5-9d9b-348bb630997b.png)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 2. [Build](https://github.com/nishantkantojha/PRO690/blob/main/.github/workflows/integrate.yml#L36)
+![image](https://user-images.githubusercontent.com/67943978/184983286-5eb99c82-bf2e-480a-8ac1-4cf2fb963df5.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 3. [Deploy](https://github.com/nishantkantojha/PRO690/blob/main/.github/workflows/integrate.yml#L69)
+* [Dockerfile](https://github.com/nishantkantojha/PRO690/blob/main/Dockerfile)
+* [Kubernetes Deployment Manifest File](https://github.com/nishantkantojha/PRO690/blob/main/.github/deploy/deployment.yaml)
+
+![image](https://user-images.githubusercontent.com/67943978/184983363-ccbf7cf9-f52a-4db6-9502-4fef6107a9be.png)
+
+## Slack Notification
+![image](https://user-images.githubusercontent.com/67943978/184984041-e7c5ae82-9c89-46a3-9930-99d3257a875e.png)
+
+
+## Final Deployed Application
+![image](https://user-images.githubusercontent.com/67943978/184984141-bfba4fdd-9a16-420e-b832-e5f9333c09bb.png)
+

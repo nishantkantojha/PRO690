@@ -23,7 +23,7 @@ jobs:
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
-    - name: Slack Notification
+    - name: Build Notification
       uses: act10ns/slack@v1
       with: 
         status: starting
@@ -49,7 +49,7 @@ jobs:
           docker run -d -p 8080:80 --name flutter-web flutter-web 
 
   deploy_notification:
-    name: Slack Notification
+    name: Deploy Notification
     needs: [flutter_build]
     runs-on: self-hosted
     env:

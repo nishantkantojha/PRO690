@@ -51,7 +51,7 @@ jobs:
       run: flutter config --enable-web  
 
     - name: Checkout flutter-action
-      run: flutter config --enable-web
+      run: flutter pub get
 
     - name: Checkout flutter-action
       run: flutter build web --release

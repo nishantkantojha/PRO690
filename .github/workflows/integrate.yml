@@ -73,8 +73,11 @@ jobs:
       - run: kubectl get po -A
       - run: kubectl cluster-info
       - run: kubectl get nodes
-      - run: kubeclt apply -f deploy/deployment.yaml
-      - run: kubectl get po -A
+      - run: |
+          cd ../deploy 
+          kubeclt apply -f deploy/deployment.yaml
+      - run: kubectl get deployment
+      - run: kubectl get pod
       - run: kubectl cluster-info
       - run: kubectl get nodes
       - run: echo 'http://20.163.118.138:8080'

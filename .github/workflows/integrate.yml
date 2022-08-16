@@ -26,10 +26,10 @@ jobs:
       if: always()
       
     - name: Buliding project
-      uses: actions/checkout@v1
-      uses: subosito/flutter-action@v1
-      with:
-        channel: 'dev'
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+      - with:
+         channel: 'dev'
       run: flutter config --enable-web
       run: flutter pub get
       run: flutter build web --release

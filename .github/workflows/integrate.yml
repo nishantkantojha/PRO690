@@ -25,7 +25,7 @@ jobs:
         message: Starting Build and Deploy...
       if: always()
       
-    steps:
+    - name: Buliding project
       - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v1
         with:

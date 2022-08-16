@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   flutter_test:
-    name: Run flutter test and analyze
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,8 +17,8 @@ jobs:
       - run: flutter analyze
       - run: flutter test
       
-  build_web:
-    name: Build Flutter (Web)
+  flutter_build:
+    name: Build
     needs: [flutter_test]
     runs-on: self-hosted
     steps:
@@ -33,3 +33,13 @@ jobs:
           docker build -t flutter-web .
       - run: |
           docker run -d -p 8080:80 --name flutter-web flutter-web 
+
+  flutter_deplo:
+    name: Deploy
+    needs: [flutter_build]
+    runs-on: self-hosted
+    steps:
+      - run: docker --version
+      - run: kubectl get po -A
+      - run: kubectl cluster-info
+      - run: kubectl get nodes

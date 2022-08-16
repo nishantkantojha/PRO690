@@ -1,36 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flutter-deployment
-  labels:
-    app: flutter
+  name: flutter-deployment
+  labels:
+    app: flutter
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: flutter
-  template:
-    metadata:
-      labels:
-        app: flutter
-    spec:
-      containers:
-      - name: flutter-web
-        image: 245244/flutter-web:latest
-        ports:
-        - containerPort: 80
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flutter
+  template:
+    metadata:
+      labels:
+        app: flutter
+    spec:
+      containers:
+      - name: flutter-web
+        image: 245244/flutter-web:latest
+        ports:
+        - containerPort: 80
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: flutter-service
+  name: flutter-service
 spec:
-  selector:
-    app: flutter
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 31000
-    type: NodePort
-
+  selector:
+    app: flutter
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376

@@ -26,20 +26,20 @@ jobs:
       if: always()
       
     - name: Buliding project
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'dev'
-      - run: flutter config --enable-web
-      - run: flutter pub get
-      - run: flutter build web --release
-      - run: |
-          cd build/web
-          git init
-          git config --global user.email nishantkantojha@outlook.com
-          git config --global user.name nishantkantojha
-          git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/nishantkantojha/PRO690.git
-          git add .
-          git commit - "update"
-          git push origin main -f
+      uses: actions/checkout@v1
+      uses: subosito/flutter-action@v1
+      with:
+        channel: 'dev'
+      run: flutter config --enable-web
+      run: flutter pub get
+      run: flutter build web --release
+      run: |
+        cd build/web
+        git init
+        git config --global user.email nishantkantojha@outlook.com
+        git config --global user.name nishantkantojha
+        git status
+        git remote add origin https://${{secrets.commit_secret}}@github.com/nishantkantojha/PRO690.git
+        git add .
+        git commit - "update"
+        git push origin main -f

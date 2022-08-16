@@ -65,7 +65,7 @@ jobs:
 
   flutter_deploy:
     name: Deploy
-    needs: [deploy_notification]
+    needs: [flutter_deploy]
     runs-on: self-hosted
     steps:
       - run: docker --version

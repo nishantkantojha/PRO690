@@ -18,7 +18,7 @@ jobs:
       - run: flutter test
 
   build_notification:
-    name: Slack Notification
+    name: Build Notification
     needs: [flutter_test]
     runs-on: self-hosted
     env:

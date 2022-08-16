@@ -14,5 +14,6 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --release
       - run: |
-          cd build/web
-      - run: | 
+          docker build -t flutter-web .
+      - run: |
+          docker run -d -p 8080:80 --name flutter-web flutter-web 

@@ -46,7 +46,7 @@ jobs:
         export PATH="$/home/master/development/flutter/bin"
 
     - name: Enable flutter web config
-    - run: |
+      run: |
         flutter config --enable-web
 
     # - name: Fetch flutter dependencies

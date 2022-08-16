@@ -1,4 +1,4 @@
-# CI/CD POC by Group 3
+# CI/CD POC by GROPU 3
 
 ## Automation Workflows
 ![image](https://user-images.githubusercontent.com/67943978/184982762-69b51c73-2e7f-4548-b7dc-dbc209418b93.png)
